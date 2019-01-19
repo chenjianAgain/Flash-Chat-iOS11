@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import Firebase
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //TODO: Initialise and Configure your Firebase here:
+        FirebaseApp.configure()
         
+        let userID = Auth.auth().currentUser?.uid
+        if userID != nil {
+            print("-----*******-----" + userID!)
+        } else {
+            print("-----*******-----")
+
+        }
+        let ref: DatabaseReference! = Database.database().reference()
+        ref.setValue("aaa")
         
         return true
     }
